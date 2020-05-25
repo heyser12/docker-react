@@ -9,3 +9,16 @@ before_install:
 script:
         # - docker run heyser/docker-react npm run test -- --coverage
         - docker run -e CI=true heyser/docker-react npm run test -- --coverage
+
+deploy:
+        provider: elasticbeanstalk
+        region: "us-east-2"
+        app: "Docker"
+        env: "Docker-env"
+        bucket_name: "elasticbeanstalk-us-east-2-412775748200"
+        bucket_path: "docker"
+        on:
+          branch: master
+        access_key_id: $AWS_Access_Key
+        secret_acess_key:
+          secure: "$AWS_SECRET_KEY"
