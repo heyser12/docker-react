@@ -1,5 +1,6 @@
 language: generic
 sudo: required
+
 services:
   - docker
 
@@ -9,15 +10,14 @@ before_install:
 script:
   - docker run -e CI=true heyser/docker-react npm run test
 
-
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
-  app: "Docker"
-  env: "Docker-env"
+  app: "docker"
+  env: "docker-env"
   bucket_name: "elasticbeanstalk-us-east-2-412775748200"
   bucket_path: "docker"
   on:
     branch: master
-   access_key_id: $AWS_Access_Key
-   secret_acess_key: $AWS_SECRET_KEY
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
