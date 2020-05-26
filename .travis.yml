@@ -9,7 +9,7 @@ before_install:
 
 script:
   - docker run -e CI=true heyser/docker-react npm run test
-
+ 
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
